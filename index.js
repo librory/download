@@ -71,7 +71,7 @@ module.exports = (uri, output, opts) => {
 		rejectUnauthorized: process.env.npm_config_strict_ssl !== 'false'
 	}, opts);
 
-	if (config && config.rewrite) {
+	if (config && config.rewrite && typeof uri === 'string') {
 		for (const [match, replace] of Object.entries(config.rewrite)) {
 			if (typeof match === 'string') {
 				if (uri.startsWith(match)) {
